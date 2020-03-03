@@ -1,4 +1,4 @@
-enum Skill: CaseIterable {
+public enum Skill: CaseIterable {
     case athletics
     case acrobatics, sleightOfHand, stealth
     case arcana, history, investigation, nature, religion

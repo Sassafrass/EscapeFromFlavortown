@@ -1,12 +1,16 @@
-struct Room {
-    let size = Int.random(in: 0...40) + 40
+public struct Room {
+    let size: Int
+
+    public init(size: Int = Int.random(in: 0...40) + 40) {
+        self.size = size
+    }
     
-    var randomLocation: Location {
+    public var randomLocation: Location {
         return .init(rawValue: Int.random(in: 0..<size))
     }
 }
 
-struct Location {
+public struct Location {
     var rawValue: Int
     
     func distance(to location: Location, in room: Room) -> Int {

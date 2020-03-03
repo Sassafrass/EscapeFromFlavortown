@@ -1,4 +1,4 @@
-struct Background {
+public struct Background {
     enum Kind: CaseIterable {
         case merchant, cityGuard, bandit, diplomat
     }
@@ -186,7 +186,7 @@ extension Background {
 }
 
 extension Background: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         return """
         \(kind)
 

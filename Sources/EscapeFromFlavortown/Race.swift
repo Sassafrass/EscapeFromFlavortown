@@ -1,4 +1,4 @@
-enum Race: String, CaseIterable {
+public enum Race: String, CaseIterable {
     case human, elf, dwarf, halfOrc, halfElf, halfling, tiefling, gnome
 }
 

@@ -1,7 +1,7 @@
-enum Armor: CustomStringConvertible {
-    enum Light: CaseIterable { case leather, studded, padded }
-    enum Medium: CaseIterable { case hide, chainShirt, scaleMail, breastPlate, halfPlate }
-    enum Heavy: CaseIterable { case ringMail, chainMail, splint, plate }
+public enum Armor: CustomStringConvertible {
+    public enum Light: CaseIterable { case leather, studded, padded }
+    public enum Medium: CaseIterable { case hide, chainShirt, scaleMail, breastPlate, halfPlate }
+    public enum Heavy: CaseIterable { case ringMail, chainMail, splint, plate }
     
     case light(Light), medium(Medium), heavy(Heavy)
     
@@ -30,7 +30,7 @@ enum Armor: CustomStringConvertible {
         }
     }
     
-    var description: String {
+    public var description: String {
         switch self {
         case .light(.padded): return "padded"
         case .light(.leather): return "leather"

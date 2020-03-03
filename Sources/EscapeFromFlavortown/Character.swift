@@ -1,25 +1,25 @@
-struct Character: CustomStringConvertible {
-    let name: String
-    var title: String?
-    let race: Race
-    let attributes: Attributes
-    var startClass: Class { return classes.first! }
-    var classes: [Class]
-    let background: Background
-    let proficiencies: [Skill]
-    var maxHitPoints: Int
-    var hitPoints: Int
-    var equippedArmor: Armor
-    var equippedWeapon: Weapon
-    var location: Location
-    var armorClass: Int {
+public struct Character: CustomStringConvertible {
+    public let name: String
+    public var title: String?
+    public let race: Race
+    public let attributes: Attributes
+    public var startClass: Class { return classes.first! }
+    public var classes: [Class]
+    public let background: Background
+    public let proficiencies: [Skill]
+    public var maxHitPoints: Int
+    public var hitPoints: Int
+    public var equippedArmor: Armor
+    public var equippedWeapon: Weapon
+    public var location: Location
+    public var armorClass: Int {
         return equippedArmor.baseClass(dexterityModifier: attributes.dexterity.modifier)
     }
-    var isBloodied: Bool { return hitPoints < maxHitPoints / 2 }
+    public var isBloodied: Bool { return hitPoints < maxHitPoints / 2 }
     
-    var level: Int { return classes.reduce(0) { $0 + $1.level } }
+    public var level: Int { return classes.reduce(0) { $0 + $1.level } }
     
-    static func random(name: String, location: Location) -> Character {
+    public static func random(name: String, location: Location) -> Character {
         let race = Race.allCases.randomElement()!
         let attributes = Attributes.roll().adding(race.bonusAttributes)
         let classKind = Class.Kind.allCases.randomElement()!
@@ -64,7 +64,7 @@ struct Character: CustomStringConvertible {
         
     }
     
-    var description: String {
+    public var description: String {
         return """
         \(name), A level \(level) \(race) \(background.name)
         \(classes.map { "\($0)" }.joined(separator: ", "))
@@ -78,7 +78,7 @@ struct Character: CustomStringConvertible {
         """
     }
     
-    func rollDice(for skill: Skill) -> Int {
+    public func rollDice(for skill: Skill) -> Int {
         let roll = 1.d(20)
         let modifier = attributes[keyPath: skill.attributeKeyPath].modifier
         let proficiency = proficiencies.contains(skill) ? ((level / 4) + 1) * 2 : 0

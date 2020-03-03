@@ -15,7 +15,7 @@ enum DamageType {
     }
 }
 
-enum Weapon: CaseIterable {
+public enum Weapon: CaseIterable {
     enum Kind {
         case simple, martial
     }
@@ -90,7 +90,7 @@ enum Weapon: CaseIterable {
 }
 
 extension Weapon: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         switch self {
         case .handAxe:
             return "hand axe"

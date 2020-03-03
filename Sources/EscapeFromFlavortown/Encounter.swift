@@ -1,15 +1,18 @@
 import func Foundation.sleep
 
-typealias Initiative<T: Collection> = [T.Index]
-
-struct Encounter {
-    typealias Token = Character
-    typealias Initiative = EscapeFromFlavortown.Initiative<[Token]>
+public struct Encounter {
+    public typealias Token = Character
+    typealias Initiative = Array<Array<Token>.Index>
 
     let room: Room
     var tokens: [Token]
+
+    public init(room: Room, tokens: [Token]) {
+        self.room = room
+        self.tokens = tokens
+    }
     
-    mutating func resolve() {
+    public mutating func resolve() {
         var tokenIndexTurnQueue = rollInitiative()
         while tokenIndexTurnQueue.count > 1 {
             let tokenIndex = tokenIndexTurnQueue.removeFirst()
@@ -39,7 +42,7 @@ struct Encounter {
 }
 
 extension Array where Element == Encounter.Token {
-    func rollInitiative(by: (Encounter.Token) -> Int) -> Encounter.Initiative {
+    func rollInitiative(by: (Encounter.Token) -> Int) -> [Index] {
         return indices.map { (index: $0, roll: by(self[$0])) }
             .sorted { $0.roll > $1.roll }
             .map { $0.index }

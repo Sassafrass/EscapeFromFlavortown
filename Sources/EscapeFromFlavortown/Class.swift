@@ -1,11 +1,11 @@
-struct Class: Hashable, CustomStringConvertible {
+public struct Class: Hashable, CustomStringConvertible {
     enum Kind: String, CaseIterable { 
         case barbarian, fighter, wizard, rogue, cleric, druid, ranger 
     }
     let kind: Kind
     var level: Int
     
-    var description: String {
+    public var description: String {
         return "\(kind) (\(level))"
     }
 }

@@ -1,4 +1,4 @@
-struct Attributes {
+public struct Attributes {
     var strength: Attribute
     var dexterity: Attribute
     var constitution: Attribute
@@ -58,7 +58,7 @@ extension Attributes {
 }
 
 extension Attributes: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         return """
         STR: \(strength)
         DEX: \(dexterity)
